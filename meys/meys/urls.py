@@ -15,15 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from meys.views import holamundo,hora, calculo
+from meys.views import holamundo, hora, calculo
 from django.conf import settings
 from django.conf.urls.static import static
-admin.site.site_header = "MEyS"
+admin.site.site_header = "MEyS Sec Ayte JEMCFFAA"
 admin.site.site_title = "Mesa de entrada y salida"
-admin.site.index_title = "MEyS"
+admin.site.index_title = "Menú"
 urlpatterns = [
-    path('meys/', admin.site.urls),
-    path('holamundo/', holamundo),
-    path('fecha/',hora),
-    path('suma/<int:dato1>/<int:dato2>',calculo)
+    path('', admin.site.urls),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
