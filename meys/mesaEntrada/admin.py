@@ -42,7 +42,7 @@ class DocumentoAdmin(admin.ModelAdmin):
         models.TextField: {'widget': Textarea(attrs={'rows': 4, 'cols': 50})},
     }
 
-    """ 
+    """
     #Estas opciones comentadas son para agregar botones
     change_list_template = "exportar/exportar.html"
     def get_urls(self):
@@ -50,10 +50,10 @@ class DocumentoAdmin(admin.ModelAdmin):
         my_urls = [
             path('exportarExcel/', self.exportar_a_excel),
             #path('exportarPdf/', self.exportar_a_pdf),
-        
+
         ]
         return my_urls + urls
-    
+
     def exportar_a_excel(self, request):
         #self.message_user(request, "Exportado a Excel con éxito")
         #messages.error(request, 'Debe seleccionar almenos un registro para exportar a Excel')
@@ -102,8 +102,8 @@ class DocumentoAdmin(admin.ModelAdmin):
         #worksheet.merge_range('A2:H2','Filtrado por: '+tipo, titulo_pagina)
 
         #list_display = ('Tipo','nro_documento','asunto','origen','Nro_sistema','Fecha_registro')
-        cabezera = ['Tipo', 'Nro documento', 'Asunto',
-                    'Unidad de origen', 'Nro sistema', 'Fecha registro', 'Obs']
+        cabezera = ['Tipo', 'Nro Doc', 'Asunto',
+                    'Origen', 'Nro sis', 'Fecha reg', 'Obs']
         worksheet.write_row('A5', cabezera, bold)
 
         cabecera = '&CMEYS %s' % unidad
@@ -112,11 +112,11 @@ class DocumentoAdmin(admin.ModelAdmin):
         worksheet.set_footer(pie)
 
         worksheet.set_column(2, 2, 30, asunto)
-        worksheet.set_column(3, 3, 18, asunto)
-        worksheet.set_column(4, 4, 6, texto1)
+        worksheet.set_column(3, 3, 11, asunto)
+        worksheet.set_column(4, 4, 11, texto1)
         worksheet.set_column(1, 1, 8, texto1)
-        worksheet.set_column(0, 0, 7, texto1)
-        worksheet.set_column(5, 5, 6, texto1)
+        worksheet.set_column(0, 0, 9, texto1)
+        worksheet.set_column(5, 5, 8, texto1)
         worksheet.set_column(6, 6, 11, texto1)
         worksheet.set_column(7, 7, 8, texto1)
 
@@ -197,8 +197,8 @@ class DocumentoAdmin(admin.ModelAdmin):
         titulo = 'Listado de documentos emitidos'
         worksheet.merge_range('A1:G1', titulo, titulo_pagina)
 
-        cabezera = ['Tipo', 'Nro documento', 'Asunto',
-                    'Destinatario', 'Nro sistema', 'Fecha registro', 'Obs']
+        cabezera = ['Tipo', 'Nro doc', 'Asunto',
+                    'Destino', 'Nro sis', 'Fecha reg', 'Obs']
         worksheet.write_row('A5', cabezera, bold)
 
         cabecera = '&CMEYS %s' % unidad
@@ -207,11 +207,11 @@ class DocumentoAdmin(admin.ModelAdmin):
         worksheet.set_footer(pie)
 
         worksheet.set_column(2, 2, 30, asunto)
-        worksheet.set_column(3, 3, 18, asunto)
-        worksheet.set_column(4, 4, 6, texto1)
+        worksheet.set_column(3, 3, 11, asunto)
+        worksheet.set_column(4, 4, 11, texto1)
         worksheet.set_column(1, 1, 8, texto1)
-        worksheet.set_column(0, 0, 7, texto1)
-        worksheet.set_column(5, 5, 6, texto1)
+        worksheet.set_column(0, 0, 9, texto1)
+        worksheet.set_column(5, 5, 8, texto1)
         worksheet.set_column(6, 6, 11, texto1)
         worksheet.set_column(7, 7, 8, texto1)
 

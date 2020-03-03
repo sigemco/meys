@@ -25,7 +25,7 @@ SECRET_KEY = '#2b^@!wpukuvmsugljit!kr7f=mavhsab+=$t$o5y_6!()ib=t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*',]
 
 
 # Application definition
@@ -77,9 +77,13 @@ WSGI_APPLICATION = 'meys.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'USER': 'sample_user',
+        'NAME': 'sample_database',
+       'PASSWORD':'sample_password',
+      'HOST':'localhost',
+      'PORT':'5432'
+    },
 }
 
 
@@ -119,7 +123,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-
+STATIC_ROOT='/home/secretaria/meys/meys/static'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),

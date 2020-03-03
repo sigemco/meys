@@ -7,7 +7,7 @@ import datetime
 def crear_numero():
     ultimo_documento = documento.objects.all().order_by('id').last()
     if not ultimo_documento:
-        return 'SG-' + str(datetime.date.today().year) + '/' + '0000'
+        return 'SG-' + str(datetime.date.today().year) + '/' + '0001'
     id_documento = ultimo_documento.Nro_sistema
     numero_entero = int(id_documento[9:12])
     nuevo = numero_entero + 1
@@ -93,7 +93,7 @@ class documento(models.Model):
     asunto = models.TextField(
         max_length=200, help_text='Maximo de 200 caracteres')
     origen = models.ForeignKey(
-        unidades, models.SET_NULL, related_name='origen', verbose_name='Unidad de Origen:', blank=True, null=True)
+        unidades, models.SET_NULL,  verbose_name='Unidad de Origen:', blank=True, null=True)
     destino = models.ForeignKey(
         unidades, models.SET_NULL, related_name='destino', verbose_name='Unidad de Destino:', blank=True, null=True)
     Estado = models.ForeignKey(estado, models.SET_NULL, null=True,)
