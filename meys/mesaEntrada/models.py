@@ -97,7 +97,7 @@ class documento(models.Model):
     destino = models.ForeignKey(
         unidades, models.SET_NULL, related_name='destino', verbose_name='Unidad de Destino:', blank=True, null=True)
     Estado = models.ForeignKey(estado, models.SET_NULL, null=True,)
-    Termino = models.DateField(blank=True, null=True)
+    Termino = models.DateTimeField(blank=True, null=True,verbose_name='Termino/Oportunidad:')
     Documento_relacionado = models.ManyToManyField(
         'self', models.SET_NULL, verbose_name='Documentos relacionados', blank=True,)
     Obs = models.TextField(max_length=200, blank=True)
@@ -121,7 +121,7 @@ class documento(models.Model):
         return self.nro_documento
 
     class Meta:
-        verbose_name_plural = "1. Registrar documentos"
+        verbose_name_plural = "1. Documentos"
 
     def save(self, *args, **kwargs):
         self.nro_documento = (self.nro_documento).upper()
